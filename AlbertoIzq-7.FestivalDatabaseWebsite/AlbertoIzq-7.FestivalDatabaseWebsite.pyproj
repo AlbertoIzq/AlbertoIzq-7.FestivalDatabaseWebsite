@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="static\main.css" />
+    <Content Include="templates\es-success.html" />
     <Content Include="templates\en-success.html" />
     <Content Include="templates\es-home.html" />
     <Content Include="templates\en-home.html" />

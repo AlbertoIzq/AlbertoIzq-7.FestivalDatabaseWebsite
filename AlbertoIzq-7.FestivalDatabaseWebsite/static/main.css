@@ -29,7 +29,7 @@ html, body { /*You point first to html tag, and then to body tag inside it*/
         height: 10px;
         font-size: 15px;
         color: #000000;
-        margin: 5px;
+        margin: 4px;
         padding: 17px;
         transition: all 0.2s ease ease-in-out; /*Transition when loading page*/
     }
@@ -38,7 +38,7 @@ html, body { /*You point first to html tag, and then to body tag inside it*/
         width: 70px;
         height: 30px;
         background-color: steelblue;
-        margin: 5px;
+        margin: 4px;
     }
 
     .main-container a { 
@@ -52,5 +52,5 @@ html, body { /*You point first to html tag, and then to body tag inside it*/
     .main-container select {
         font-size: 15px;
         color: #000000;
-        margin: 5px;
+        margin: 4px;
     }

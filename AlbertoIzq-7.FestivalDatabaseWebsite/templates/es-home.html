@@ -3,14 +3,116 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Music festivals survey</title>
+    <link href="../static/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="main-container">
         <h1>
-            ¡Bienvenido a este cuestionario sobre festivales de música!
+            ¡Bienvenido a este cuestionario sobre festivales de música!<br />
         </h1>
+        <p>
+            Mi nombre es Alberto y me gustaría hacerte algunas preguntas sobre festivales de música.<br />¿Estás preparado? ¡Vamos allá!
+        </p>
+        <div>
+            <form action="{{url_for('es_success')}}" method="post">
+                <input title="Dirección email" placeholder="Introduce tu dirección email" type="email" name="form_email" required /><br />
+                <input title="Edad" placeholder="Introduce tu edad en años" type="number" min="16" max="120" name="form_age" required /><br />
+                <label for="genders">Selecciona tu género:</label>
+                <select id="genders" name="form_gender">
+                    <option value="male">Hombre</option>
+                    <option value="female">Mujer</option>
+                    <option value="other">Otro</option>
+                </select><br />
+                <label for="genres">¿Cuál es tu género de música favorito?</label>
+                <select id="genres" name="form_music_genre">
+                    <option value="alternative">Alternativa</option>
+                    <option value="blues">Blues</option>
+                    <option value="classical">Clásica</option>
+                    <option value="country">Country</option>
+                    <option value="dance">Dance</option>
+                    <option value="drum'n'bass">Drum'n'bass</option>
+                    <option value="dubstep">Dubstep</option>
+                    <option value="edm">EDM</option>
+                    <option value="electronic">Electrónica</option>
+                    <option value="folk">Folk</option>
+                    <option value="frenchcore">Frenchcore</option>
+                    <option value="hardcore">Hardcore</option>
+                    <option value="hardstyle">Hardstyle</option>
+                    <option value="hardtek">Hardtek</option>
+                    <option value="hip hop">Hip hop</option>
+                    <option value="house">House</option>
+                    <option value="indie">Indie</option>
+                    <option value="jazz">Jazz</option>
+                    <option value="latin">Latino</option>
+                    <option value="metal">Metal</option>
+                    <option value="pop">Pop</option>
+                    <option value="psychedelic">Psicodélica</option>
+                    <option value="psytrance">Psytrance</option>
+                    <option value="punk">Punk</option>
+                    <option value="rap">Rap</option>
+                    <option value="reggae">Reggae</option>
+                    <option value="r&b">R&B</option>
+                    <option value="rock">Rock</option>
+                    <option value="soul">Soul</option>
+                    <option value="swing">Swing</option>
+                    <option value="techno">Techno</option>
+                    <option value="trance">Trance</option>
+                    <option value="world">World</option>
+                    <option value="other">Otros</option>
+                </select><br />
+                <input title="Número de festivales" placeholder="¿A cuántos festivales has ido?" type="number" min="0" max="200" name="form_festivals_number" required /><br />
+                <input title="Edad primer festival" placeholder="¿Con cuántos años fuiste a tu primer festival?" type="number" min="16" max="120" name="form_festivals_age" required /><br />
+                <input title="Nombre del festival" placeholder="¿Cuál es tu festival favorito?" type="text" name="form_festival_name" maxlength="100" required /><br />
+                <label for="genres">¿Cuál es tu género favorito para ir de festival?</label>
+                <select id="genres" name="form_festival_music_genre">
+                    <option value="alternative">Alternativa</option>
+                    <option value="blues">Blues</option>
+                    <option value="classical">Clásica</option>
+                    <option value="country">Country</option>
+                    <option value="dance">Dance</option>
+                    <option value="drum'n'bass">Drum'n'bass</option>
+                    <option value="dubstep">Dubstep</option>
+                    <option value="edm">EDM</option>
+                    <option value="electronic">Electrónica</option>
+                    <option value="folk">Folk</option>
+                    <option value="frenchcore">Frenchcore</option>
+                    <option value="hardcore">Hardcore</option>
+                    <option value="hardstyle">Hardstyle</option>
+                    <option value="hardtek">Hardtek</option>
+                    <option value="hip hop">Hip hop</option>
+                    <option value="house">House</option>
+                    <option value="indie">Indie</option>
+                    <option value="jazz">Jazz</option>
+                    <option value="latin">Latino</option>
+                    <option value="metal">Metal</option>
+                    <option value="pop">Pop</option>
+                    <option value="psychedelic">Psicodélica</option>
+                    <option value="psytrance">Psytrance</option>
+                    <option value="punk">Punk</option>
+                    <option value="rap">Rap</option>
+                    <option value="reggae">Reggae</option>
+                    <option value="r&b">R&B</option>
+                    <option value="rock">Rock</option>
+                    <option value="soul">Soul</option>
+                    <option value="swing">Swing</option>
+                    <option value="techno">Techno</option>
+                    <option value="trance">Trance</option>
+                    <option value="world">World</option>
+                    <option value="other">Otros</option>
+                </select><br />
+                <label>¿Te gustaría ir a algún festival en 2021?</label>
+                <select id="yesno" name="form_yesno">
+                    <option value="yes">Sí</option>
+                    <option value="no">No</option>
+                </select><br />
+                <input title="2021 festival name" placeholder="¿A cuál?" type="text" name="form_festival_name_2021" maxlength="100" /><br />
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>

@@ -19,3 +19,41 @@ buscar géneros
 -En el caso de que en 2021 se hagan festivales, te gustaría ir a alguno? Si/No
 -A cúal?: string
 
+___Restricciones
+
+edad primer festival <= edad
+si ha ido a 0 festivales, no cuenta festival favorito
+
+
+___GENRES
+Alternative
+Blues
+Classical
+Country
+Drum'n'bass
+Dubstep
+EDM
+Electronic
+Folk
+Frenchcore
+Hardcore
+Hardstyle
+Hardtek
+Hip hop
+House
+Indie
+Jazz
+Latin
+Metal
+Pop
+Psychedelic
+Psytrance
+Punk
+Rap
+Reggae
+R&B
+Rock
+Swing
+Techno
+World
+Other

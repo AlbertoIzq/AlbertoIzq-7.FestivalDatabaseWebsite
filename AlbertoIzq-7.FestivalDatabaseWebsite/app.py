@@ -37,6 +37,24 @@ def en_success():
               yesno, festival_name_2021)
     return render_template("en-success.html")
 
+@app.route("/es/success", methods = ['POST'])
+def es_success():
+    if request.method == 'POST':
+        email = request.form["form_email"]
+        age = request.form["form_age"]
+        gender = request.form["form_gender"]
+        music_genre = request.form["form_music_genre"]
+        festivals_number = request.form["form_festivals_number"]
+        festivals_age = request.form["form_festivals_age"]
+        festival_name = request.form["form_festival_name"]
+        festival_music_genre = request.form["form_festival_music_genre"]
+        yesno = request.form["form_yesno"]
+        festival_name_2021 = request.form["form_festival_name_2021"]
+
+        print(email, age, gender, music_genre, festivals_number, festivals_age, festival_name, festival_music_genre,
+              yesno, festival_name_2021)
+    return render_template("es-success.html")
+
 if __name__ == '__main__':
     app.debug = True
     app.run(port = 5003) # port = 5000, by default
