@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
-#from send_email import send_email
+from send_email import send_email_en
 from sqlalchemy.sql import func
 
 app = Flask(__name__)
@@ -74,7 +74,8 @@ def en_success():
             #average_height = db.session.query(func.avg(Data.height_)).scalar()
             #average_height = round(average_height, 1)
             #count = db.session.query(Data.height_).count()
-            #send_email(email, height, average_height, count)
+            send_email_en(email, age, gender, music_genre, festival_number, festival_age,
+                        festival_name, festival_music_genre, yesno_2021, festival_name_2021)
             #return render_template("success.html")
 
             print(email, age, gender, music_genre, festival_number, festival_age, festival_name, festival_music_genre,
