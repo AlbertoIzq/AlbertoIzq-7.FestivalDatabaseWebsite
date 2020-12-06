@@ -5,7 +5,6 @@
     <meta charset="utf-8" />
     <title>Music festivals survey</title>
     <link href="../static/main.css" rel="stylesheet" />
-    <link href="../static/main.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -23,7 +22,7 @@
             <form action="{{url_for('en_success')}}" method="post">
                 <input title="Email address" placeholder="Enter your email address" type="email" name="form_email" required /><br />
                 <input title="Age" placeholder="Enter your age in years" type="number" min="16" max="120" name="form_age" required /><br />
-                <label for="genders">Select your gender</label>
+                <label for="genders">Select your gender:</label>
                 <select id="genders" name="form_gender">
                     <option value="male">Male</option>
                     <option value="female">Female</option>

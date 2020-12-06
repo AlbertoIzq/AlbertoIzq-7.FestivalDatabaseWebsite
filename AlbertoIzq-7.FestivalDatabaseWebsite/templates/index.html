@@ -14,18 +14,18 @@
 <body>
     <div class="main-container">
         <h1>
-            Welcome to this music festivals survey!<br />
-            ¡Bienvenido a este cuestionario sobre festivales de música!
+            <strong>¡Bienvenido a este cuestionario sobre festivales de música!</strong><br />
+            Welcome to this music festivals survey!
         </h1>
         <p>
-            Please choose a language to continue:<br />
-            Por favor, escoge un idioma para continuar:
+            <strong>Por favor, escoge un idioma para continuar:</strong><br />
+            Please choose a language to continue:
         </p>
-        <a href="{{ url_for('en_home') }}">
-            <button>English</button>
-        </a>
         <a href="{{ url_for('es_home') }}">
             <button>Español</button>
+        </a>
+        <a href="{{ url_for('en_home') }}">
+            <button>English</button>
         </a>
     </div>
 </body>

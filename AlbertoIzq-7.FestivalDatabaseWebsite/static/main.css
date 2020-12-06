@@ -1,9 +1,56 @@
+html, body { /*You point first to html tag, and then to body tag inside it*/
+    height: 100%;
+    margin: 0;
+}
+
 .main-container {
     margin: 0 auto;
     width: 100%;
     height: 100%;
-    /*background-color: #006666;
-    color: #e6ffff;*/
+    background-color: #006666;
+    color: #e6ffff;
     overflow: hidden;
     text-align: center;
 }
+
+    .main-container h1 {
+        font-family: Arial, sans-serif;
+        font-size: 30px;
+        color: #DDCCEE;
+        margin-top: 20px;
+    }
+
+    .main-container form {
+        margin: 10px;
+    }
+
+    .main-container input {
+        width: 350px;
+        height: 10px;
+        font-size: 15px;
+        color: #000000;
+        margin: 5px;
+        padding: 17px;
+        transition: all 0.2s ease ease-in-out; /*Transition when loading page*/
+    }
+
+    .main-container button {
+        width: 70px;
+        height: 30px;
+        background-color: steelblue;
+        margin: 5px;
+    }
+
+    .main-container a { 
+        color: #ffffff;
+    }
+
+    .main-container label {
+        font-weight: normal;
+    }
+
+    .main-container select {
+        font-size: 15px;
+        color: #000000;
+        margin: 5px;
+    }
