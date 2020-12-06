@@ -54,3 +54,9 @@ html, body { /*You point first to html tag, and then to body tag inside it*/
         color: #000000;
         margin: 4px;
     }
+
+.message {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    color: #ff9999;
+}

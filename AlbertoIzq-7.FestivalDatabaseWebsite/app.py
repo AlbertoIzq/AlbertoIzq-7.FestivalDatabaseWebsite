@@ -7,6 +7,12 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres123@localhost/festival_survey'
 db = SQLAlchemy(app)
 
+message_email_en = "Seems like I've got something from that email address already"
+message_email_es = "Parece que alguien ya ha introducido datos con ese correo electrónico"
+
+message_age_en = "Your age cannot be less than when you first went to a festival, can it?"
+message_age_es = "Tu edad no puede ser menor que la que tenías cuando fuiste por primera vez a un festival, ¿no?"
+
 class Data(db.Model):
     __tablename__ = "data"
     id = db.Column(db.Integer, primary_key = True)
@@ -74,9 +80,10 @@ def en_success():
             print(email, age, gender, music_genre, festival_number, festival_age, festival_name, festival_music_genre,
                    yesno_2021, festival_name_2021)
             return render_template("en-success.html")
-
-        #return render_template("index.html",
-                               #text = "Seems like we've got something from that email address already")
+        elif age < festival_age:
+            return render_template("en-home.html", text = message_age_en)
+        else:
+            return render_template("en-home.html", text = message_email_en)
 
 @app.route("/es/success", methods = ['POST'])
 def es_success():

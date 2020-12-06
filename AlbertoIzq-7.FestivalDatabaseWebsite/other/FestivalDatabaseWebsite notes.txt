@@ -22,8 +22,6 @@ buscar géneros
 ___Restricciones
 
 edad primer festival <= edad
-si ha ido a 0 festivales, no cuenta festival favorito
-
 
 ___GENRES
 Alternative
