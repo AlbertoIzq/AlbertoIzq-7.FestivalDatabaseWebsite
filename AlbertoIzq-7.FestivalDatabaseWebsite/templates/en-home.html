@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Music festivals survey</title>
+    <link href="../static/main.css" rel="stylesheet" />
+    <link href="../static/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="main-container">
+        <h1>
+            Welcome to this music festivals survey!<br />
+        </h1>
+        <p>
+            My name is Alberto and I would like to ask you some questions regarding music festivals. Are you ready? Let's go!
+        </p>
+        <div>
+            <form action="{{url_for('en_success')}}" method="post">
+                <label>Email</label>
+                <input title="Your email will be safe" placeholder="Enter your email address" type="email" name="form_email" required /><br />
+                <label>Age</label>
+                <input title="Your data will be safe" placeholder="Enter your age in years" type="number" min="16" max="120" name="form_age" required /><br />
+                <label for="genders">Select your gender</label>
+                <select id="genders" name="form_gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select><br />
+                <label>Which is your favourite music genre?</label>
+                <input title="Your data will be safe" placeholder="Enter music genre" type="text" name="form_music_genre" maxlength="50" required /><br />
+                <label>How many festivals have you been to?</label>
+                <input title="Your data will be safe" placeholder="Enter number of festivals" type="number" min="0" max="200" name="form_festivals_number" required /><br />
+                <label>At what age did you go to your first music festival?</label>
+                <input title="Your data will be safe" placeholder="Enter age" type="number" min="16" max="120" name="form_festivals_age" required /><br />
+                <label>Which is your favourite music festival?</label>
+                <input title="Your data will be safe" placeholder="Enter festival name" type="text" name="form_festival_name" maxlength="100" required /><br />
+                <label>Which is your favourite music genre for festivals?</label>
+                <input title="Your data will be safe" placeholder="Enter music genre" type="text" name="form_festival_music_genre" maxlength="50" required /><br />
+                <label>Would you like to go to a music festival in 2021 (if there are any)?</label>
+                <select id="yesno" name="form_yesno">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select><br />
+                <label>Which one?</label>
+                <input title="Your data will be safe" placeholder="Enter festival name" type="text" name="form_festival_name_2021" maxlength="100"/><br />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

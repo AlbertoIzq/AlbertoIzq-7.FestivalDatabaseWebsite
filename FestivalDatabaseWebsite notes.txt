@@ -1,0 +1,21 @@
+___index.html
+
+Welcome to this survey blablabla
+Choose language: Spanish or English
+
+___/en/survey.html
+___/es/survey.html
+
+Cuestionario para hacer un pequeño estudio sobre la asistencia a festivales. Considero un festival un evento musical de 1 o más días, en el que hay artistas diferentes y a veces de diferentes géneros musicales. La duración suele ser mayor a 6 horas
+
+-E-mail
+-Edad: 16-120
+-Género: Hombre, Mujer, N/C
+-A cuántos festivales has ido en toda tu vida?: 0-...
+-Con cuántos años fuiste a tu primer festival? 16-...
+-Cuál ha sido tu festival favorito?: string
+-Cuál es tu género musical favorito para ir de festival?
+buscar géneros
+-En el caso de que en 2021 se hagan festivales, te gustaría ir a alguno? Si/No
+-A cúal?: string
+
