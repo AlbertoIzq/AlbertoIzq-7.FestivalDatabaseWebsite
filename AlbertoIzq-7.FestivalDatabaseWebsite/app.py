@@ -4,8 +4,35 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 
 app = Flask(__name__)
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres123@localhost/height_collector'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres123@localhost/festival_survey'
 db = SQLAlchemy(app)
+
+class Data(db.Model):
+    __tablename__ = "data"
+    id = db.Column(db.Integer, primary_key = True)
+    email = db.Column(db.String(120), unique = True)
+    age = db.Column(db.Integer)
+    gender = db.Column(db.String(8))
+    music_genre = db.Column(db.String(12))
+    festival_number = db.Column(db.Integer)
+    festival_age = db.Column(db.Integer)
+    festival_name = db.Column(db.String(120))
+    festival_music_genre = db.Column(db.String(12))
+    yesno_2021 = db.Column(db.String(5))
+    festival_name_2021 = db.Column(db.String(120))
+
+    def __init__(self, email, age, gender, music_genre, festival_number, festival_age,
+                 festival_name, festival_music_genre, yesno_2021, festival_name_2021):
+        self.email = email
+        self.age = age
+        self.gender = gender
+        self.music_genre = music_genre
+        self.festival_number = festival_number
+        self.festival_age = festival_age
+        self.festival_name = festival_name
+        self.festival_music_genre = festival_music_genre
+        self.yesno_2021 = yesno_2021
+        self.festival_name_2021 = festival_name_2021
 
 @app.route("/")
 def index():
@@ -26,16 +53,30 @@ def en_success():
         age = request.form["form_age"]
         gender = request.form["form_gender"]
         music_genre = request.form["form_music_genre"]
-        festivals_number = request.form["form_festivals_number"]
-        festivals_age = request.form["form_festivals_age"]
+        festival_number = request.form["form_festival_number"]
+        festival_age = request.form["form_festival_age"]
         festival_name = request.form["form_festival_name"]
         festival_music_genre = request.form["form_festival_music_genre"]
-        yesno = request.form["form_yesno"]
+        yesno_2021 = request.form["form_yesno_2021"]
         festival_name_2021 = request.form["form_festival_name_2021"]
 
-        print(email, age, gender, music_genre, festivals_number, festivals_age, festival_name, festival_music_genre,
-              yesno, festival_name_2021)
-    return render_template("en-success.html")
+        if db.session.query(Data).filter(Data.email==email).count() == 0: # count() counts how many values satisfy this condition
+            data = Data(email, age, gender, music_genre, festival_number, festival_age,
+                        festival_name, festival_music_genre, yesno_2021, festival_name_2021)
+            db.session.add(data) # You add the variable created before for the database to recognize the values
+            db.session.commit()
+            #average_height = db.session.query(func.avg(Data.height_)).scalar()
+            #average_height = round(average_height, 1)
+            #count = db.session.query(Data.height_).count()
+            #send_email(email, height, average_height, count)
+            #return render_template("success.html")
+
+            print(email, age, gender, music_genre, festival_number, festival_age, festival_name, festival_music_genre,
+                   yesno_2021, festival_name_2021)
+            return render_template("en-success.html")
+
+        #return render_template("index.html",
+                               #text = "Seems like we've got something from that email address already")
 
 @app.route("/es/success", methods = ['POST'])
 def es_success():
@@ -48,11 +89,11 @@ def es_success():
         festivals_age = request.form["form_festivals_age"]
         festival_name = request.form["form_festival_name"]
         festival_music_genre = request.form["form_festival_music_genre"]
-        yesno = request.form["form_yesno"]
+        yesno_2021 = request.form["form_yesno_2021"]
         festival_name_2021 = request.form["form_festival_name_2021"]
 
         print(email, age, gender, music_genre, festivals_number, festivals_age, festival_name, festival_music_genre,
-              yesno, festival_name_2021)
+              yesno_2021, festival_name_2021)
     return render_template("es-success.html")
 
 if __name__ == '__main__':
