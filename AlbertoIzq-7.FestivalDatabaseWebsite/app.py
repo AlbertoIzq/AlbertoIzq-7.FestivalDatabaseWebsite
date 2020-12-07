@@ -71,12 +71,37 @@ def en_success():
                         festival_name, festival_music_genre, yesno_2021, festival_name_2021)
             db.session.add(data) # You add the variable created before for the database to recognize the values
             db.session.commit()
+
+            c_number_entries = db.session.query(Data.email).count()
+            c_min_age = db.session.query(func.min(Data.age)).scalar()
+            c_max_age = db.session.query(func.max(Data.age)).scalar()
+            c_avg_age = db.session.query(func.avg(Data.age)).scalar()
+            c_avg_age = round(c_avg_age, 1)
+            c_males = db.session.query(Data).filter(Data.gender=="male").count()
+            c_males = str(round(float(100 * c_males / c_number_entries), 2))
+            c_females = db.session.query(Data).filter(Data.gender=="female").count()
+            c_females = str(round(float(100 * c_females / c_number_entries), 2))
+            c_min_num_fest = db.session.query(func.min(Data.festival_number)).scalar()
+            c_max_num_fest = db.session.query(func.max(Data.festival_number)).scalar()
+            c_avg_num_fest = db.session.query(func.avg(Data.festival_number)).scalar()
+            c_avg_num_fest = round(c_avg_num_fest, 1)
+            c_min_age_first = db.session.query(func.min(Data.festival_age)).scalar()
+            c_max_age_first = db.session.query(func.max(Data.festival_age)).scalar()
+            c_avg_age_first = db.session.query(func.avg(Data.festival_age)).scalar()
+            c_avg_age_first = round(c_avg_age_first, 1)
+            c_yes = db.session.query(Data).filter(Data.yesno_2021=="yes").count()
+            c_yes = str(round(float(100 * c_yes / c_number_entries), 2))
+            c_no = db.session.query(Data).filter(Data.yesno_2021=="no").count()
+            c_no = str(round(float(100 * c_no / c_number_entries), 2))
+
             #average_height = db.session.query(func.avg(Data.height_)).scalar()
             #average_height = round(average_height, 1)
             #count = db.session.query(Data.height_).count()
             send_email_en(email, age, gender, music_genre, festival_number, festival_age,
-                        festival_name, festival_music_genre, yesno_2021, festival_name_2021)
-            #return render_template("success.html")
+                          festival_name, festival_music_genre, yesno_2021, festival_name_2021,
+                          c_number_entries, c_min_age, c_max_age, c_avg_age, c_males, c_females,
+                          c_min_num_fest, c_max_num_fest, c_avg_num_fest, c_min_age_first,
+                          c_max_age_first, c_avg_age_first, c_yes, c_no)
 
             print(email, age, gender, music_genre, festival_number, festival_age, festival_name, festival_music_genre,
                    yesno_2021, festival_name_2021)
