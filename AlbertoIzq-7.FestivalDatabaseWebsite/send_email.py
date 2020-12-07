@@ -9,64 +9,69 @@ def send_email_en(email, age, gender, music_genre, festival_number, festival_age
     from_email = "test.alberto.py@gmail.com"
     from_password = "Python69+"
     to_email = email
-
     subject = "Music festivals survey - Results"
-    message = "Hey there!<br /><br /> \
-    Thanks for your submission. You introduced the following data:<br /> \
-    - Email address: <strong>{}</strong><br />".format(email) + "\
-    - Age: <strong>{}</strong> years<br />".format(str(age)) + "\
-    - Gender: <strong>{}</strong><br />".format(gender) + "\
-    - Favourite music genre: <strong>{}</strong><br />".format(music_genre) + "\
-    - Festivals you have been to: <strong>{}</strong><br />".format(str(festival_number))
+    message_list = []
 
+    message_list.append("Hey there!")
+    message_list.append("")
+    message_list.append("Thanks for your submission. You entered the following data:")
+    message_list.append("- Email address: <strong>{}</strong>".format(email))
+    message_list.append("- Age: <strong>{}</strong> years".format(str(age)))
+    message_list.append("- Gender: <strong>{}</strong>".format(gender))
+    message_list.append("- Favourite music genre: <strong>{}</strong>".format(music_genre))
+    message_list.append("- Festivals you have been to: <strong>{}</strong>".format(str(festival_number)))
     if festival_age == None:
-        message = message + "- Age at your first festival: <strong>-</strong> years<br />"
+        message_list.append("- Age at your first festival: <strong>-</strong> years")
     else:
-        message = message + "- Age at your first festival: <strong>{}</strong> years<br />".format(str(festival_age))
-
-    message = message + "- Favourite festival: <strong>{}</strong><br />".format(festival_name) +  "\
-    - Favourite music genre for festivals: <strong>{}</strong><br />".format(festival_music_genre)
-
+       message_list.append("- Age at your first festival: <strong>{}</strong> years".format(str(festival_age)))
+    message_list.append("- Favourite festival: <strong>{}</strong>".format(festival_name))
+    message_list.append("- Favourite music genre for festivals: <strong>{}</strong>".format(festival_music_genre))
     if yesno_2021 == "yes":
-        message = message + "- You want to go to \"<strong>{}</strong>\" festival in <strong>2021</strong><br />".format(festival_name_2021)
+        message_list.append("- You want to go to \"<strong>{}</strong>\" festival in <strong>2021</strong>".format(festival_name_2021))
     else:
-        message = message + "- You <strong>don't want</strong> to go to any festival in <strong>2021</strong>. You're boring! haha<br />"
+        message_list.append("- You <strong>don't want</strong> to go to any festival in <strong>2021</strong>. You're boring! haha")
+    message_list.append("")
 
-    message = message + "<br />Survey results are the following:<br /> \
-    - Number of entries: {}<br />".format(str(c_number_entries)) + "\
-    - Age:<br /> \
-    &emsp;&emsp;· Minimum: {} years<br />".format(str(c_min_age)) + "\
-    &emsp;&emsp;· Maximum: {} years<br />".format(str(c_max_age)) + "\
-    &emsp;&emsp;· Average: {} years<br />".format(str(c_avg_age)) + "\
-    - Gender:<br /> \
-    &emsp;&emsp;· % males: {}%<br />".format(str(c_males)) + "\
-    &emsp;&emsp;· % females: {}%<br />".format(str(c_females)) + "\
-    &emsp;&emsp;· % other: {}%<br />".format(str(c_other)) + "\
-    - Number of festivals:<br /> \
-    &emsp;&emsp;· Minimum: {}<br />".format(str(c_min_num_fest)) + "\
-    &emsp;&emsp;· Maximum: {}<br />".format(str(c_max_num_fest)) + "\
-    &emsp;&emsp;· Average: {}<br />".format(str(c_avg_num_fest)) + "\
-     - Age first festival:<br />"
-
+    message_list.append("Survey results are the following:")
+    message_list.append("- Number of entries: {}".format(str(c_number_entries)))
+    message_list.append("- Age:")
+    message_list.append("&emsp;&emsp;· Minimum: {} years".format(str(c_min_age)))
+    message_list.append("&emsp;&emsp;· Maximum: {} years".format(str(c_max_age)))
+    message_list.append("&emsp;&emsp;· Average: {} years".format(str(c_avg_age)))
+    message_list.append("- Gender:")
+    message_list.append("&emsp;&emsp;· % males: {}%".format(str(c_males)))
+    message_list.append("&emsp;&emsp;· % females: {}%".format(str(c_females)))
+    message_list.append("&emsp;&emsp;· % other: {}%".format(str(c_other)))
+    message_list.append("- Number of festivals:")
+    message_list.append("&emsp;&emsp;· Minimum: {}".format(str(c_min_num_fest)))
+    message_list.append("&emsp;&emsp;· Maximum: {}".format(str(c_max_num_fest)))
+    message_list.append("&emsp;&emsp;· Average: {}".format(str(c_avg_num_fest)))
+    message_list.append("- Age first festival:")
     if c_min_age_first == None:
-        message = message + "&emsp;&emsp;· Minimum: - años<br />"
+        message_list.append("&emsp;&emsp;· Minimum: - años")
     else:
-        message = message + "&emsp;&emsp;· Minimum: {} años<br />".format(str(c_min_age_first))
-
+        message_list.append("&emsp;&emsp;· Minimum: {} años".format(str(c_min_age_first)))
     if c_max_age_first == None:
-        message = message + "&emsp;&emsp;· Maximum: - años<br />"
+        message_list.append("&emsp;&emsp;· Maximum: - años")
     else:
-        message = message + "&emsp;&emsp;· Maximum: {} años<br />".format(str(c_max_age_first))
-
+        message_list.append("&emsp;&emsp;· Maximum: {} años".format(str(c_max_age_first)))
     if c_avg_age_first == None:
-        message = message + "&emsp;&emsp;· Average: - años<br />"
+        message_list.append("&emsp;&emsp;· Average: - años")
     else:
-        message = message + "&emsp;&emsp;· Average: {} años<br />".format(str(c_avg_age_first))
+        message_list.append("&emsp;&emsp;· Average: {} años".format(str(c_avg_age_first)))
+    message_list.append("- Wanna go to a festival in 2021:")
+    message_list.append("&emsp;&emsp;· % yes: {}%".format(str(c_yes)))
+    message_list.append("&emsp;&emsp;· % no: {}%".format(str(c_no)))
+    message_list.append("")
 
-    message = message + "- Wanna go to a festival in 2021:<br /> \
-    &emsp;&emsp;· % yes: {}%<br />".format(str(c_yes)) + "\
-    &emsp;&emsp;· % no: {}%<br />".format(str(c_no)) + "\
-    <br />Regards,<br /> Alberto"
+    message_list.append("Regards,")
+    message_list.append("")
+
+    message_list.append("Alberto")
+
+    message = ""
+    for msg in message_list:
+        message = message + msg + "<br />"   
 
     msg = MIMEText(message, 'html')
     msg['Subject'] = subject
