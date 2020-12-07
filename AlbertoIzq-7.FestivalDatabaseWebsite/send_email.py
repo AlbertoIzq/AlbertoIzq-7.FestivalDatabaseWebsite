@@ -17,9 +17,14 @@ def send_email_en(email, age, gender, music_genre, festival_number, festival_age
     - Age: <strong>{}</strong> years<br />".format(str(age)) + "\
     - Gender: <strong>{}</strong><br />".format(gender) + "\
     - Favourite music genre: <strong>{}</strong><br />".format(music_genre) + "\
-    - Festivals you have been to: <strong>{}</strong><br />".format(str(festival_number)) + "\
-    - Age of your first festival: <strong>{}</strong> years<br />".format(str(festival_age)) +  "\
-    - Favourite festival: <strong>{}</strong><br />".format(festival_name) +  "\
+    - Festivals you have been to: <strong>{}</strong><br />".format(str(festival_number))
+
+    if festival_age == None:
+        message = message + "- Age at your first festival: <strong>-</strong> years<br />"
+    else:
+        message = message + "- Age at your first festival: <strong>{}</strong> years<br />".format(str(festival_age))
+
+    message = message + "- Favourite festival: <strong>{}</strong><br />".format(festival_name) +  "\
     - Favourite music genre for festivals: <strong>{}</strong><br />".format(festival_music_genre)
 
     if yesno_2021 == "yes":
@@ -41,11 +46,24 @@ def send_email_en(email, age, gender, music_genre, festival_number, festival_age
     &emsp;&emsp;· Minimum: {}<br />".format(str(c_min_num_fest)) + "\
     &emsp;&emsp;· Maximum: {}<br />".format(str(c_max_num_fest)) + "\
     &emsp;&emsp;· Average: {}<br />".format(str(c_avg_num_fest)) + "\
-    - Age first festival:<br /> \
-    &emsp;&emsp;· Minimum: {} years<br />".format(str(c_min_age_first)) + "\
-    &emsp;&emsp;· Maximum: {} years<br />".format(str(c_max_age_first)) + "\
-    &emsp;&emsp;· Average: {} years<br />".format(str(c_avg_age_first)) + "\
-    - Wanna go to a festival in 2021:<br /> \
+     - Age first festival:<br />"
+
+    if c_min_age_first == None:
+        message = message + "&emsp;&emsp;· Minimum: - años<br />"
+    else:
+        message = message + "&emsp;&emsp;· Minimum: {} años<br />".format(str(c_min_age_first))
+
+    if c_max_age_first == None:
+        message = message + "&emsp;&emsp;· Maximum: - años<br />"
+    else:
+        message = message + "&emsp;&emsp;· Maximum: {} años<br />".format(str(c_max_age_first))
+
+    if c_avg_age_first == None:
+        message = message + "&emsp;&emsp;· Average: - años<br />"
+    else:
+        message = message + "&emsp;&emsp;· Average: {} años<br />".format(str(c_avg_age_first))
+
+    message = message + "- Wanna go to a festival in 2021:<br /> \
     &emsp;&emsp;· % yes: {}%<br />".format(str(c_yes)) + "\
     &emsp;&emsp;· % no: {}%<br />".format(str(c_no)) + "\
     <br />Regards,<br /> Alberto"
@@ -74,18 +92,33 @@ def send_email_es(email, age, gender, music_genre, festival_number, festival_age
     message = "Buenas!<br /><br /> \
     Gracias por participar en la encuesta. Los datos que has introducido son los siguientes:<br /> \
     - Correo electrónico: <strong>{}</strong><br />".format(email) + "\
-    - Edad: <strong>{}</strong> años<br />".format(str(age)) + "\
-    - Género: <strong>{}</strong><br />".format(gender) + "\
-    - Género músical favorito: <strong>{}</strong><br />".format(music_genre) + "\
-    - Festivales en los que has estado: <strong>{}</strong><br />".format(str(festival_number)) + "\
-    - Edad en tu primer festival: <strong>{}</strong> años<br />".format(str(festival_age)) +  "\
-    - Festival favorito: <strong>{}</strong><br />".format(festival_name) +  "\
+    - Edad: <strong>{}</strong> años<br />".format(str(age))
+
+    if gender == "male":
+        message = message + "- Género: <strong>hombre</strong><br />"
+    elif gender == "female":
+        message = message + "- Género: <strong>mujer</strong><br />"
+    else:
+        message = message + "- Género: <strong>otro</strong><br />"
+
+    message = message + "- Género músical favorito: <strong>{}</strong><br />".format(music_genre) + "\
+    - Festivales en los que has estado: <strong>{}</strong><br />".format(str(festival_number))
+
+    if festival_age == None:
+        message = message + "- Edad en tu primer festival: <strong>-</strong> años<br />"
+    else:
+        message = message + "- Edad en tu primer festival: <strong>{}</strong> años<br />".format(str(festival_age))
+
+    message = message + "- Festival favorito: <strong>{}</strong><br />".format(festival_name) +  "\
     - Género musical favorito para festivales: <strong>{}</strong><br />".format(festival_music_genre)
 
     if yesno_2021 == "yes":
         message = message + "- Quieres ir al festival \"<strong>{}</strong>\" en <strong>2021</strong><br />".format(festival_name_2021)
     else:
-        message = message + "- <strong>No quieres ir</strong> a ningún festival en <strong>2021</strong>. Eres aburrid@! jaja<br />"
+        if gender == "female":
+            message = message + "- <strong>No quieres ir</strong> a ningún festival en <strong>2021</strong>. Eres una aburrida! jaja<br />"
+        else:
+            message = message + "- <strong>No quieres ir</strong> a ningún festival en <strong>2021</strong>. Eres un aburrido! jaja<br />"
 
     message = message + "<br />Resultados de la encuesta:<br /> \
     - Personas que han participado: {}<br />".format(str(c_number_entries)) + "\
@@ -101,11 +134,24 @@ def send_email_es(email, age, gender, music_genre, festival_number, festival_age
     &emsp;&emsp;· Mínimo: {}<br />".format(str(c_min_num_fest)) + "\
     &emsp;&emsp;· Máximo: {}<br />".format(str(c_max_num_fest)) + "\
     &emsp;&emsp;· Media: {}<br />".format(str(c_avg_num_fest)) + "\
-    - Edad en elprimer festival:<br /> \
-    &emsp;&emsp;· Mínima: {} años<br />".format(str(c_min_age_first)) + "\
-    &emsp;&emsp;· Máxima: {} años<br />".format(str(c_max_age_first)) + "\
-    &emsp;&emsp;· Media: {} años<br />".format(str(c_avg_age_first)) + "\
-    - Quieren ir a un festival en 2021:<br /> \
+    - Edad en el primer festival:<br />"
+
+    if c_min_age_first == None:
+        message = message + "&emsp;&emsp;· Mínima: - años<br />"
+    else:
+        message = message + "&emsp;&emsp;· Mínima: {} años<br />".format(str(c_min_age_first))
+
+    if c_max_age_first == None:
+        message = message + "&emsp;&emsp;· Máxima: - años<br />"
+    else:
+        message = message + "&emsp;&emsp;· Máxima: {} años<br />".format(str(c_max_age_first))
+
+    if c_avg_age_first == None:
+        message = message + "&emsp;&emsp;· Media: - años<br />"
+    else:
+        message = message + "&emsp;&emsp;· Media: {} años<br />".format(str(c_avg_age_first))
+
+    message = message + "- Quieren ir a un festival en 2021:<br /> \
     &emsp;&emsp;· % sí: {}%<br />".format(str(c_yes)) + "\
     &emsp;&emsp;· % no: {}%<br />".format(str(c_no)) + "\
     <br />Saludos,<br /> Alberto"
