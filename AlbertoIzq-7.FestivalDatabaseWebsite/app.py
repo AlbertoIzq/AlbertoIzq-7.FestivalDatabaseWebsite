@@ -4,7 +4,9 @@ from send_email import send_email_en, send_email_es
 from sqlalchemy.sql import func
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres123@localhost/festival_survey'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres123@localhost/festival_survey'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://mvfatqbndiywmq:ca7ad145f73486df5b634a78093699a7aeb48b89fdb2d8fe7bde16002bb8a92c@ec2-54-224-124-241.compute-1.amazonaws.com:5432/d9ntmn7difchir?sslmode=require'
+
 db = SQLAlchemy(app)
 
 message_email_en = "Seems like I've got something from that email address already"
@@ -231,5 +233,5 @@ def es_success():
             return render_template("es-home.html", text = message_email_es)
 
 if __name__ == '__main__':
-    app.debug = True
+    app.debug = False
     app.run(port = 5003) # port = 5000, by default
