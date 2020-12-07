@@ -13,8 +13,8 @@ message_email_es = "Parece que alguien ya ha introducido datos con ese correo el
 message_first_en = "If you enter your age when going to your first festival then number of festivals cannot be 0, can it?"
 message_first_es = "Si has introducido la edad con la que fuiste a tu primer festival entonces el número de festivales no puede ser 0, ¿no?"
 
-message_first2_en = "If number of festivals is different than 0 then you have to enter your age when going to your first festival, don't you?"
-message_first2_es = "Si el número de festivales es diferente a 0 entonces tienes que introducir la edad con la que fuiste a tu primer festival, ¿no?"
+message_first2_en = "If you have been in any festival then you have to enter your age at the first one, don't you?"
+message_first2_es = "Si has ido a algún festival 0 entonces tienes que introducir la edad en el primero, ¿no?"
 
 message_age_en = "Your age cannot be less than when you first went to a festival, can it?"
 message_age_es = "Tu edad no puede ser menor que la que tenías cuando fuiste por primera vez a un festival, ¿no?"
@@ -95,6 +95,7 @@ def en_success():
             return render_template("en-home.html", text = message_yes2021_en)
         if yesno_2021 == "no" and festival_name_2021 is not None:
             return render_template("en-home.html", text = message_no2021_en)
+        # Save data into database if there's no entry with the same email address
         if db.session.query(Data).filter(Data.email==email).count() == 0: # count() counts how many values satisfy this condition
             data = Data(email, age, gender, music_genre, festival_number, festival_age,
                         festival_name, festival_music_genre, yesno_2021, festival_name_2021)
@@ -134,9 +135,6 @@ def en_success():
             c_no = db.session.query(Data).filter(Data.yesno_2021=="no").count()
             c_no = str(round(float(100 * c_no / c_number_entries), 2))
 
-            #average_height = db.session.query(func.avg(Data.height_)).scalar()
-            #average_height = round(average_height, 1)
-            #count = db.session.query(Data.height_).count()
             send_email_en(email, age, gender, music_genre, festival_number, festival_age,
                           festival_name, festival_music_genre, yesno_2021, festival_name_2021,
                           c_number_entries, c_min_age, c_max_age, c_avg_age, c_males, c_females,
