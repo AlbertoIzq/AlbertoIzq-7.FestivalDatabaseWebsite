@@ -3,7 +3,7 @@ Website to gather festival info for a database
 
 Website to gather festivals attendance information via a survey. The website has an initial page to choose language (English or Spanish) and then you access the survey page. When clicking on submit button, if all info is fine then you go to a thank you page and an email is sent to your email account.
 
-__SURVEY INFO
+_SURVEY INFO_
 
 - Email
 - Age
@@ -15,30 +15,30 @@ __SURVEY INFO
 - Favourite music genre for festivals
 - You want to go to "festival name" in 2021
 
-__EMAIL SENT CONTENT
+_EMAIL SENT CONTENT_
 
 Survey info
 
 Results:
 - Number of entries
 - Age:
-  · Minimum
-  · Maximum
-  · Average
+  - Minimum
+  - Maximum
+  - Average
 - Gender:
-  · % males
-  · % females
-  · % other
+  - % males
+  - % females
+  - % other
 - Number of festivals:
-  · Minimum
-  · Maximum
-  · Average
+  - Minimum
+  - Maximum
+  - Average
 - Age first festival:
-  · Minimum
-  · Maximum
-  · Average
+  - Minimum
+  - Maximum
+  - Average
 - Wanna go to a festival in 2021:
-  · % yes
-  · % no
+  - % yes
+  - % no
 
 Check "Screenshots" folder to see how the script works
